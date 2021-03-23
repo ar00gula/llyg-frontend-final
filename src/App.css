@@ -1,39 +1,41 @@
+
+section {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+
+section h1 {
+  font-size: 3rem;
+}
+
+/* Posts list */
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.review h2 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.review-excerpt {
+  padding: 0.25rem 0.25rem;
+  border: 1px solid rgb(177, 174, 174);
+  border-radius: 7px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.review-list .review-excerpt + .review-excerpt {
+  margin-top: 0.5rem;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.review-excerpt h3 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+p.review-content {
+  margin-top: 10px;
 }

@@ -5,11 +5,12 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import './App.css'
 import { ReviewsList } from './features/reviews/ReviewsList'
 import { AddReviewForm } from './features/reviews/AddReviewForm'
-import './App.css'
 
 function App() {
+
   return (
     <Router>
       <div className="App">
