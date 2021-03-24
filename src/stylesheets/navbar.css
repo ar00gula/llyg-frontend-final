@@ -1,0 +1,89 @@
+/* navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  overflow: hidden;
+}
+
+.right {
+  float: right;
+  text-align: right;
+}
+
+.left {
+  float: left;
+  text-align: left;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.gen {
+  padding: 14px 16px;
+}
+
+.settings {
+  padding: 4px 6px;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: pink;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content-right {
+  display: none;
+  position: fixed;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 0px;
+}
+
+.dropdown-content a, .dropdown-content-right a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover, .dropdown-content-right a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content, .dropdown:hover .dropdown-content-right {
+  display: block;
+}
