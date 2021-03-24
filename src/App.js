@@ -7,11 +7,15 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import './stylesheets/navbar.css'
+import './stylesheets/books.css'
 import { ReviewsList } from './features/reviews/ReviewsList'
 import { AddReviewForm } from './features/reviews/AddReviewForm'
 import { EditReviewForm } from './features/reviews/EditReviewForm'
 import { BooksList } from './features/books/BooksList'
 import { Navbar } from './app/Navbar'
+import { SortedBooksPage } from './features/books/SortedBooksPage'
+import { SingleBookPage } from './features/books/SingleBookPage'
+
 
 function App() {
 
@@ -34,6 +38,8 @@ function App() {
               </React.Fragment>
              )}
           />
+          <Route exact path="/books/sort/:sortBy" component={SortedBooksPage} />
+          <Route exact path="/books/:bookId" component={SingleBookPage} />
           <Route
             exact path="/reviews"
             render={() => (

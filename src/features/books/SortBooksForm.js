@@ -5,14 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 export const SortBooksForm = (props) => {
 
-    // const [sortBy, setSortBy] = useState('')
-
-    // const users = useSelector(state => state.users)
-
-    // const onSortByChanged = e => setSortBy(e.target.value)
-
-
-
   return (
     <div className="sort-by-form">
       <form>

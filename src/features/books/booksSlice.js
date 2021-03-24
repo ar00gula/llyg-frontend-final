@@ -9,14 +9,16 @@ const initialState = [
     summary: "Gay Victorian bird magic",
     img_url: "../../images/magpie-lord.jpg",
     rating: 5,
-    hearts: 0 },
+    hearts: 0,
+    reviews: [] },
     { id: '2',
     title: "Widdershins",
     author: "Jordan L Hawk",
     summary: "turn of the century gay lovecraftian horror romance",
     img_url: "../../images/slippery-creatures.png",
     rating: 5,
-    hearts: 0 }
+    hearts: 0,
+    reviews: [] }
 ]
 
 const booksSlice = createSlice({
@@ -29,10 +31,17 @@ const booksSlice = createSlice({
             if (existingBook) {
                 existingBook.hearts++
             }
+        },
+        heartRemoved(state, action) {
+            const { bookId } = action.payload
+            const existingBook = state.find(book => book.id === bookId)
+            if (existingBook) {
+                existingBook.hearts--
+            }
         }
     }
 })
 
-export const { heartAdded } = booksSlice.actions
+export const { heartAdded, heartRemoved } = booksSlice.actions
 
 export default booksSlice.reducer

@@ -11,10 +11,9 @@ export const Navbar = () => {
                 <div className="dropdown left">
                     <button className="dropbtn gen">Books</button>
                     <div className="dropdown-content">
-                    <Link to="/books">All Books</Link>
-                    <Link to="/books/by-author">By Author</Link>
-                    <Link to="/books/by-title">By Title</Link>
-                    <Link to="/books/by-genre">By Genre</Link>
+                    <Link to="/books/sort/author">By Author</Link>
+                    <Link to="/books/sort/title">By Title</Link>
+                    <Link to="/books">Browse</Link>
                     </div>
                 </div>
                 <div className="dropdown right">

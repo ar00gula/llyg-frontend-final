@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { ReviewUser } from './ReviewUser'
 import { TimeAgo } from './TimeAgo'
 
-export const ReviewsList = () => {
+export const ReviewsList = (props) => {
     const reviews = useSelector(state => state.reviews)
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
 

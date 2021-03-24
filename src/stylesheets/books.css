@@ -1,0 +1,9 @@
+.book-cover {
+    width: 180px;
+    height: 270px;
+}
+
+.book-info {
+    display: inline-block;
+    padding: 0px 10px 0px 0px;
+}
