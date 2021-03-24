@@ -7,14 +7,14 @@ const initialState = [
     title: "The Magpie Lord",
     author: "KJ Charles",
     summary: "Gay Victorian bird magic",
-    img_url: "../images/magpie-lord.jpg",
+    img_url: "../../images/magpie-lord.jpg",
     rating: 5,
     hearts: 0 },
     { id: '2',
     title: "Widdershins",
     author: "Jordan L Hawk",
     summary: "turn of the century gay lovecraftian horror romance",
-    img_url: "../images/slippery-creatures.png",
+    img_url: "../../images/slippery-creatures.png",
     rating: 5,
     hearts: 0 }
 ]

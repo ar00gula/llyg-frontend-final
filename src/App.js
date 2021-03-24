@@ -17,8 +17,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <div className="App">
+      <div className="wrapper">
         <Switch>
           <Route
             exact path="/"
@@ -27,7 +26,14 @@ function App() {
               </React.Fragment>
             )}
           />
-          <Route exact path="/books" component={BooksList} />
+          <Route
+            exact path="/books"
+            render={() => (
+              <React.Fragment>
+                <BooksList />
+              </React.Fragment>
+             )}
+          />
           <Route
             exact path="/reviews"
             render={() => (
@@ -42,6 +48,7 @@ function App() {
           {/* o shit what does redirect do */}
         </Switch>
       </div>
+    <Navbar />
     </Router>
   );
 }
