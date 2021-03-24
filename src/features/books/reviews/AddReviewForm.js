@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { reviewAdded } from '../books/booksSlice'
+import { reviewAdded } from '../booksSlice'
 
 
 export const AddReviewForm = ({bookId}) => {

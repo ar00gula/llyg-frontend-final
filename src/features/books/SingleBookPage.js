@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
-import { AddReviewForm } from '../reviews/AddReviewForm'
-import { ReviewsList } from '../reviews/ReviewsList'
+import { AddReviewForm } from './reviews/AddReviewForm'
+import { ReviewsList } from './reviews/ReviewsList'
 
 export const SingleBookPage = ({ match }) => {
   const { bookId } = match.params
