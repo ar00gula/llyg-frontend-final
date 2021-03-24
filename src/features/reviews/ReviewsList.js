@@ -5,7 +5,9 @@ import { ReviewUser } from './ReviewUser'
 import { TimeAgo } from './TimeAgo'
 
 export const ReviewsList = (props) => {
-    const reviews = useSelector(state => state.reviews)
+    const reviews = useSelector(state =>
+        state.books.find(book => book.id === props.book.id).reviews
+      )
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
 
     //render newest first
@@ -15,9 +17,9 @@ export const ReviewsList = (props) => {
             <p className="review-content">{review.content.substring(0, 200)}</p>
             <ReviewUser userId={review.user} />
             <TimeAgo timestamp={review.date} />
-            <Link to={`/editReview/${review.id}`} className="button">
+            {/* <Link to={`/editReview/${review.id}`} className="button">
                 Edit Review
-            </Link>
+            </Link> */}
         </article>
         //make it so u can expand a review and see more than just the preview
     )//add code here to make it so that a max of 6 reviews show? or make a box around them and let you scroll thru the whole thing?
