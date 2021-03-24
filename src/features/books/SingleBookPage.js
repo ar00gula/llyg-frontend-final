@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { AddReviewForm } from '../reviews/AddReviewForm'
+import { ReviewsList } from '../reviews/ReviewsList'
 
 export const SingleBookPage = ({ match }) => {
   const { bookId } = match.params
@@ -8,6 +9,8 @@ export const SingleBookPage = ({ match }) => {
   const book = useSelector(state =>
     state.books.find(book => book.id === bookId)
   )
+
+  // const [review, setReview] = useState([])
 
   if (!book) {
     return (
@@ -22,7 +25,8 @@ export const SingleBookPage = ({ match }) => {
         <img src={book.img_url} alt="cover" />
         <h1>{book.title}</h1>
         <React.Fragment>
-          <AddReviewForm />
+          <ReviewsList bookId={bookId}/>
+          <AddReviewForm bookId={bookId}/>
         </React.Fragment>
     </section>
   )

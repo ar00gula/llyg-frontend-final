@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom'
 import { ReviewUser } from './ReviewUser'
 import { TimeAgo } from './TimeAgo'
 
-export const ReviewsList = (props) => {
+export const ReviewsList = ({bookId}) => {
     const reviews = useSelector(state =>
-        state.books.find(book => book.id === props.book.id).reviews
+        state.books.find(book => book.id === bookId).reviews
       )
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
-
-    //render newest first
+    
     const renderedReviews = orderedReviews.map(review => (
         <article className="review-excerpt" key={review.id}>
             <h3>{review.title}</h3>
@@ -29,6 +28,7 @@ export const ReviewsList = (props) => {
     return (
         <section className="reviews-list">
             <h2>Recent Reviews</h2>
+            {console.log(orderedReviews)}
             {renderedReviews}
         </section>
     )

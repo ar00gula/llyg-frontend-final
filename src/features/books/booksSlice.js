@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit' //nanoid 
-// import { sub } from 'date-fns'
+import { createSlice, nanoid } from '@reduxjs/toolkit' //nanoid 
+import { sub } from 'date-fns'
 
 
 const initialState = [
@@ -18,13 +18,34 @@ const initialState = [
     img_url: "../../images/slippery-creatures.png",
     rating: 5,
     hearts: 0,
-    reviews: [] }
+    reviews: []
+    }
 ]
 
 const booksSlice = createSlice({
     name: 'books',
     initialState,
     reducers: {
+        reviewAdded: {
+            reducer(state, action) {
+                const existingBook = state.find(book => book.id === action.payload.bookId)
+                existingBook.reviews.push(action.payload.review)
+            },
+            prepare(title, content, userId, bookId) {
+                return {
+                    payload: {
+                        review: {
+                            id: nanoid(),
+                            date: new Date().toISOString(),
+                            title,
+                            content,
+                            user: userId
+                        },
+                        bookId: bookId
+                    }
+                }
+            }
+        },
         heartAdded(state, action) {
             const { bookId } = action.payload
             const existingBook = state.find(book => book.id === bookId)
@@ -42,6 +63,6 @@ const booksSlice = createSlice({
     }
 })
 
-export const { heartAdded, heartRemoved } = booksSlice.actions
+export const { heartAdded, heartRemoved, reviewAdded } = booksSlice.actions
 
 export default booksSlice.reducer

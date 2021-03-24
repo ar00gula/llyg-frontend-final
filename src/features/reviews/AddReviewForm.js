@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { reviewAdded } from './reviewsSlice'
+// import { reviewAdded } from './reviewsSlice'
+import { reviewAdded } from '../books/booksSlice'
 
-export const AddReviewForm = () => {
+
+export const AddReviewForm = ({bookId}) => {
     const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
@@ -17,13 +19,13 @@ export const AddReviewForm = () => {
 
     const onSubmitReview = () => {
         if (title && content) {
-            dispatch(reviewAdded(title, content, userId)
+            dispatch(reviewAdded(title, content, userId, bookId)
                 //dispatching action creator (includes defined type string) with arugment of our desired payload
-
             )
 
             setTitle('')
             setContent('')
+            setUserId('')
             //blanks out form
         }
     }
