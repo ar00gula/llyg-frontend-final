@@ -46,6 +46,14 @@ const booksSlice = createSlice({
                 }
             }
         },
+        reviewUpdated(state, action) {
+            const { id, title, content } = action.payload
+            const existingReview = state.find(review => review.id === id)
+            if (existingReview) {
+                existingReview.title = title
+                existingReview.content = content
+            }
+        },
         heartAdded(state, action) {
             const { bookId } = action.payload
             const existingBook = state.find(book => book.id === bookId)
@@ -63,6 +71,6 @@ const booksSlice = createSlice({
     }
 })
 
-export const { heartAdded, heartRemoved, reviewAdded } = booksSlice.actions
+export const { reviewAdded, reviewUpdated, heartAdded, heartRemoved } = booksSlice.actions
 
 export default booksSlice.reducer

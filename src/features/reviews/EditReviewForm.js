@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { reviewUpdated } from './reviewsSlice'
+import { reviewUpdated } from '../books/booksSlice'
 
 export const EditReviewForm = ({ match }) => {
     const { reviewId } = match.params
