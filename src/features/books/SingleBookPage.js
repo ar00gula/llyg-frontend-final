@@ -2,13 +2,12 @@ import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { AddReviewForm } from './reviews/AddReviewForm'
 import { ReviewsList } from './reviews/ReviewsList'
+import { selectBookById } from './booksSlice'
 
 export const SingleBookPage = ({ match }) => {
   const { bookId } = match.params
 
-  const book = useSelector(state =>
-    state.books.find(book => book.id === bookId)
-  )
+  const book = useSelector(state => selectBookById(state, bookId))
 
   // const [review, setReview] = useState([])
 

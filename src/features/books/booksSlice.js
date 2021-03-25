@@ -2,25 +2,27 @@ import { createSlice, nanoid } from '@reduxjs/toolkit' //nanoid
 import { sub } from 'date-fns'
 
 
-const initialState = [
-    { id: '1',
-    title: "The Magpie Lord",
-    author: "KJ Charles",
-    summary: "Gay Victorian bird magic",
-    img_url: "../../images/magpie-lord.jpg",
-    rating: 5,
-    hearts: 0,
-    reviews: [] },
-    { id: '2',
-    title: "Widdershins",
-    author: "Jordan L Hawk",
-    summary: "turn of the century gay lovecraftian horror romance",
-    img_url: "../../images/slippery-creatures.png",
-    rating: 5,
-    hearts: 0,
-    reviews: []
-    }
-]
+const initialState = 
+
+// [
+//     { id: '1',
+//     title: "The Magpie Lord",
+//     author: "KJ Charles",
+//     summary: "Gay Victorian bird magic",
+//     img_url: "../../images/magpie-lord.jpg",
+//     rating: 5,
+//     hearts: 0,
+//     reviews: [] },
+//     { id: '2',
+//     title: "Widdershins",
+//     author: "Jordan L Hawk",
+//     summary: "turn of the century gay lovecraftian horror romance",
+//     img_url: "../../images/slippery-creatures.png",
+//     rating: 5,
+//     hearts: 0,
+//     reviews: []
+//     }
+// ]
 
 const booksSlice = createSlice({
     name: 'books',
@@ -74,3 +76,7 @@ const booksSlice = createSlice({
 export const { reviewAdded, reviewUpdated, heartAdded, heartRemoved } = booksSlice.actions
 
 export default booksSlice.reducer
+
+export const selectAllBooks = state => state.books.books
+
+export const selectBookById = (state, bookId) => state.books.books.find(book => book.id === bookId)
