@@ -12,6 +12,7 @@ export const AddReviewForm = ({bookId}) => {
     const [userId, setUserId] = useState('')
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
 
+
     const users = useSelector(state => state.users)
 
     const canSave = [title, content, userId].every(Boolean) && addRequestStatus === 'idle'
@@ -21,10 +22,11 @@ export const AddReviewForm = ({bookId}) => {
     const onUserChanged = e => setUserId(e.target.value)
 
     const onSubmitReview = async () => {
+        const date = new Date().toISOString()
         if (canSave) {
             try { setAddRequestStatus('pending')
             const resultAction = await dispatch(
-                addNewReview({title, content, userId, bookId})
+                addNewReview({title: title, content: content, user: userId, book: bookId, date: date})
                 //dispatching action creator (includes defined type string) with arugment of our desired payload
             )
             unwrapResult(resultAction)

@@ -1,5 +1,5 @@
 import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit' 
-// import { sub } from 'date-fns'
+import { sub } from 'date-fns'
 
 
 const initialState = {
@@ -29,20 +29,20 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 
 export const addNewReview = createAsyncThunk('books/addNewReview', async initialReview => {
     const response = await fetch(`http://localhost:3001/reviews`, {
-        ///aight bitch when you come back to this, you gotta 
+        ///aight bitch when you come back to this, you gotta add a reviews controller and update your backend so that you can add reviews!!
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        id: nanoid(),
-        date: new Date().toISOString(),
+        date: initialReview.date,
         title: initialReview.title,
         content: initialReview.content,
-        user: initialReview.userId,
+        user: initialReview.user,
+        book_id: initialReview.book
       })
-    })
+    }).then(resp => resp.json())
     return response
 })
 
@@ -86,7 +86,10 @@ const booksSlice = createSlice({
             state.error = action.error.message
         },
         [addNewReview.fulfilled]: (state, action) => {
-            state.books.push(action.payload)
+            state.status = 'succeeded'
+            let bookReviewed = state.books.find(book => book.id === action.payload.bookId)
+            bookReviewed.reviews.push(action.payload.review)
+
         }
     }
 })

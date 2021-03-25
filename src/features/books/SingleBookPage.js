@@ -1,16 +1,23 @@
-import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { AddReviewForm } from './reviews/AddReviewForm'
 import { ReviewsList } from './reviews/ReviewsList'
-import { selectBookById } from './booksSlice'
+import { fetchBooks } from './booksSlice'
 
 export const SingleBookPage = ({ match }) => {
+  const dispatch = useDispatch()
   const bookId = match.params.bookId
   console.log(match)
   console.log(bookId)
 
   const book = useSelector(state => state.books.books.find(book => book.id.toString() === bookId))
 
+  // useEffect(() => {
+  //   if (addRequestStatus === 'idle') {
+  //       dispatch(fetchBooks())
+  //       //this is VERY wrong (creating additional entries) how tf do i update this should be so easy
+  //   }
+  // }, [addRequestStatus, dispatch])
   // const [review, setReview] = useState([])
 
   if (!book) {
@@ -25,10 +32,8 @@ export const SingleBookPage = ({ match }) => {
     <section>
         <img src={book.img_url} alt="cover" />
         <h1>{book.title}</h1>
-        <React.Fragment>
           <ReviewsList bookId={bookId}/>
-          <AddReviewForm bookId={bookId}/>
-        </React.Fragment>
+          <AddReviewForm bookId={bookId} />
     </section>
   )
 }

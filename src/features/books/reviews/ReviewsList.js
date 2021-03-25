@@ -1,6 +1,8 @@
+import { nanoid } from '@reduxjs/toolkit'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+// import { AddReviewForm } from './AddReviewForm'
 import { ReviewUser } from './ReviewUser'
 import { TimeAgo } from './TimeAgo'
 
@@ -11,7 +13,7 @@ export const ReviewsList = ({bookId}) => {
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
     
     const renderedReviews = orderedReviews.map(review => (
-        <article className="review-excerpt" key={review.id}>
+        <article className="review-excerpt" key={nanoid()}>
             <h3>{review.title}</h3>
             <p className="review-content">{review.content.substring(0, 200)}</p>
             <ReviewUser userId={review.user} />
@@ -28,7 +30,6 @@ export const ReviewsList = ({bookId}) => {
     return (
         <section className="reviews-list">
             <h2>Recent Reviews</h2>
-            {console.log(orderedReviews)}
             {renderedReviews}
         </section>
     )
