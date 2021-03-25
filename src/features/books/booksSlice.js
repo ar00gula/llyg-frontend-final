@@ -8,26 +8,6 @@ const initialState = {
     error: null
 }
 
-// [
-//     { id: '1',
-//     title: "The Magpie Lord",
-//     author: "KJ Charles",
-//     summary: "Gay Victorian bird magic",
-//     img_url: "../../images/magpie-lord.jpg",
-//     rating: 5,
-//     hearts: 0,
-//     reviews: [] },
-//     { id: '2',
-//     title: "Widdershins",
-//     author: "Jordan L Hawk",
-//     summary: "turn of the century gay lovecraftian horror romance",
-//     img_url: "../../images/slippery-creatures.png",
-//     rating: 5,
-//     hearts: 0,
-//     reviews: []
-//     }
-// ]
-
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
     const data = await fetch(`http://localhost:3001/books`)
     const json = await data.json()
@@ -47,30 +27,29 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   }
 )
 
+export const addNewReview = createAsyncThunk('books/addNewReview', async initialReview => {
+    const response = await fetch(`http://localhost:3001/reviews`, {
+        ///aight bitch when you come back to this, you gotta 
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        id: nanoid(),
+        date: new Date().toISOString(),
+        title: initialReview.title,
+        content: initialReview.content,
+        user: initialReview.userId,
+      })
+    })
+    return response
+})
+
 const booksSlice = createSlice({
     name: 'books',
     initialState,
     reducers: {
-        reviewAdded: {
-            reducer(state, action) {
-                const existingBook = state.books.find(book => book.id === action.payload.bookId)
-                existingBook.reviews.push(action.payload.review)
-            },
-            prepare(title, content, userId, bookId) {
-                return {
-                    payload: {
-                        review: {
-                            id: nanoid(),
-                            date: new Date().toISOString(),
-                            title,
-                            content,
-                            user: userId
-                        },
-                        bookId: bookId
-                    }
-                }
-            }
-        },
         reviewUpdated(state, action) {
             const { id, title, content } = action.payload
             const existingReview = state.books.find(review => review.id === id)
@@ -105,6 +84,9 @@ const booksSlice = createSlice({
         [fetchBooks.rejected]: (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
+        },
+        [addNewReview.fulfilled]: (state, action) => {
+            state.books.push(action.payload)
         }
     }
 })
