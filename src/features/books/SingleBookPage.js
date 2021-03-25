@@ -5,9 +5,11 @@ import { ReviewsList } from './reviews/ReviewsList'
 import { selectBookById } from './booksSlice'
 
 export const SingleBookPage = ({ match }) => {
-  const { bookId } = match.params
+  const bookId = match.params.bookId
+  console.log(match)
+  console.log(bookId)
 
-  const book = useSelector(state => selectBookById(state, bookId))
+  const book = useSelector(state => state.books.books.find(book => book.id.toString() === bookId))
 
   // const [review, setReview] = useState([])
 

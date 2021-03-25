@@ -6,7 +6,7 @@ import { TimeAgo } from './TimeAgo'
 
 export const ReviewsList = ({bookId}) => {
     const reviews = useSelector(state =>
-        state.books.find(book => book.id === bookId).reviews
+        state.books.books.find(book => book.id.toString() === bookId).reviews
       )
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
     

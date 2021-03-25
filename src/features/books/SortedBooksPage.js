@@ -6,7 +6,7 @@ export const SortedBooksPage = ({ match }) => {
   const { sortBy } = match.params
 
   const books = useSelector(state =>
-    state.books.slice().sort((a,b) => a[sortBy].localeCompare(b[sortBy]))
+    state.books.books.slice().sort((a,b) => a[sortBy].localeCompare(b[sortBy]))
   )
 
   if (!books) {
