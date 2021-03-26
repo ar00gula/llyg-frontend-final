@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux'
 
 export const ReviewUser = ({ userId }) => {
     //needs to match prop name exactly
-  const user = useSelector(state =>
-    state.users.find(user => user.id === userId)
-  )
+  const user = useSelector(state => state.users.currentUser)
 
-  return <span>by {user ? user.name : 'Unknown author'}</span>
+  return <span>by {user ? user.username : 'Unknown author'}</span>
 }

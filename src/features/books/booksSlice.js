@@ -1,6 +1,4 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit' 
-import { sub } from 'date-fns'
-
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit' 
 
 const initialState = {
     books: [],
@@ -33,7 +31,8 @@ export const addNewReview = createAsyncThunk('books/addNewReview', async initial
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        'Authorization': `Bearer ${window.localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         date: initialReview.date,

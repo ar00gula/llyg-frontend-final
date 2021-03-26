@@ -12,6 +12,9 @@ import { BooksList } from './features/books/BooksList'
 import { Navbar } from './app/Navbar'
 import { SortedBooksPage } from './features/books/SortedBooksPage'
 import { SingleBookPage } from './features/books/SingleBookPage'
+import { SignUpForm } from './features/users/Signup';
+import { LoginForm } from './features/users/LoginForm';
+import { UserPage } from './features/users/UserPage'
 
 
 function App() {
@@ -37,6 +40,10 @@ function App() {
           />
           <Route exact path="/books/sort/:sortBy" component={SortedBooksPage} />
           <Route exact path="/books/:bookId" component={SingleBookPage} />
+          <Route exact path="/signup" component={SignUpForm} />
+          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/account" component={UserPage} />
+
           <Redirect to="/" />
           {/* o shit what does redirect do */}
         </Switch>

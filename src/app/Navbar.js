@@ -1,8 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import settingsIcon from '../images/settingsicon.png';
+import { useDispatch } from 'react-redux'
+import { userLogout } from '../features/users/usersSlice'
 
 export const Navbar = () => {
+
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const logout = () => {
+        window.localStorage.removeItem('token')
+        dispatch(userLogout())
+        console.log("hiiii")
+        history.push('/')
+    }
 
         return (
             <div className="navbar">
@@ -22,11 +34,10 @@ export const Navbar = () => {
                     <Link to="/account/settings">Settings</Link>
                     <Link to="/account/my-favorites">My Favorites</Link>
                     <Link to="/account/my-reviews">My Reviews</Link>
-                    <Link to="/">Logout</Link>
+                    <a onClick={() => logout()}>Logout</a>
                     {/* Make this a working logout link */}
                     </div>
                 </div> 
             </div>
         )
-    
 }
