@@ -64,6 +64,7 @@ const booksSlice = createSlice({
                 existingBook.hearts++
             }
         },
+        // not yet connected to backend
         heartRemoved(state, action) {
             const { bookId } = action.payload
             const existingBook = state.books.find(book => book.id === bookId)
@@ -88,7 +89,6 @@ const booksSlice = createSlice({
             state.status = 'succeeded'
             let bookReviewed = state.books.find(book => book.id === action.payload.bookId)
             bookReviewed.reviews.push(action.payload.review)
-
         }
     }
 })

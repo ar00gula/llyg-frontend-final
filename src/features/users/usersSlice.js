@@ -62,18 +62,21 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
   }
 )
 
-// export const currentUser = createAsyncThunk('users/currentUser', async () => {
-//   const token = localStorage.token
-//   if (token) {
-//     const response = await axios.get(`http://localhost:3001/users`, {
-//       headers: { 'Authorization': token }
-//     })
-//     if (response.message) {
-//       localStorage.removeItem('token')
-//     }
-//     return response
-//   }
-// })
+export const toggleFavorite = createAsyncThunk('books/toggleFavorite', async favoriteInfo => {
+  const response = await fetch(`http://localhost:3001/users/update`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Authorization': `Bearer ${window.localStorage.getItem('token')}`
+    },
+    body: JSON.stringify({
+      book_id: favoriteInfo.book_id,
+      favorite: favoriteInfo.favorite
+    })
+  }).then(resp => resp.json())
+  return response
+})
 
 const usersSlice = createSlice({
   name: 'users',
@@ -111,6 +114,9 @@ const usersSlice = createSlice({
     },
     [currentUser.fulfilled]: (state, action) => {
       state.currentUser = action.payload.user
+    },
+    [toggleFavorite.fulfilled]: (state, action) => {
+      state.currentUser.favorites.push(action.payload.favoriteBook)
     }
   }
 })
