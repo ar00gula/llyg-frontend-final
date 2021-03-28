@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const initialState = {
   users: [],
-  currentUser: {},
+  currentUser: null,
   error: null
 }
 
@@ -118,6 +118,10 @@ const usersSlice = createSlice({
     [currentUser.fulfilled]: (state, action) => {
       state.currentUser = action.payload.user
     },
+    [currentUser.rejected]: (state, action) => {
+      state.currentUser = {}
+      state.error = "User fetch failed. Please try logging in!"
+    },
     [toggleFavorite.fulfilled]: (state, action) => {
       state.currentUser.books.push(action.payload.favoriteBook)
     }
@@ -125,6 +129,5 @@ const usersSlice = createSlice({
 })
 
 export const { authenticated, userLogout, reviewAdded } = usersSlice.actions
-
 
 export default usersSlice.reducer

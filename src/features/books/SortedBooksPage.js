@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { BookCard } from './BookCard'
 
 export const SortedBooksPage = ({ match }) => {
-  const { sortBy } = match.params
+  let { sortBy } = match.params
 
   const books = useSelector(state =>
     state.books.books.slice().sort((a,b) => a[sortBy].localeCompare(b[sortBy]))
@@ -12,6 +12,7 @@ export const SortedBooksPage = ({ match }) => {
   if (!books) {
     return (
       <section>
+        {console.log(sortBy)}
         <h2>Category not found!</h2>
       </section>
     )

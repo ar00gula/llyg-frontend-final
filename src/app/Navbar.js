@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import settingsIcon from '../images/settingsicon.png';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userLogout } from '../features/users/usersSlice'
 
 export const Navbar = () => {
@@ -16,6 +16,9 @@ export const Navbar = () => {
         history.push('/')
     }
 
+    const currentUser = useSelector(state => state.users.currentUser)
+
+    if (currentUser) {
         return (
             <div className="navbar">
                 <Link to="/">Home</Link>
@@ -34,10 +37,27 @@ export const Navbar = () => {
                     <Link to="/account/settings">Settings</Link>
                     <Link to="/account/my-favorites">My Favorites</Link>
                     <Link to="/account/my-reviews">My Reviews</Link>
-                    <a onClick={() => logout()}>Logout</a>
+                    <a href="/" onClick={() => logout()}>Logout</a>
                     {/* Make this a working logout link */}
                     </div>
                 </div> 
             </div>
         )
+    } else {
+        return(
+        <div className="navbar">
+                <Link to="/">Home</Link>
+                <div className="dropdown left">
+                    <button className="dropbtn gen">Books</button>
+                    <div className="dropdown-content">
+                    <Link to="/books/sort/author">By Author</Link>
+                    <Link to="/books/sort/title">By Title</Link>
+                    <Link to="/books">Browse</Link>
+                    </div>
+                </div>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+        </div>
+        )
+    }
 }

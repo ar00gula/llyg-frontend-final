@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { userSignup } from './usersSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
 
-
+//add error catching for when server isn't runnning
 export const SignUpForm = () => {
 
   const dispatch = useDispatch()
