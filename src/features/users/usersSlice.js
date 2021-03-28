@@ -119,7 +119,7 @@ const usersSlice = createSlice({
       state.currentUser = action.payload.user
     },
     [currentUser.rejected]: (state, action) => {
-      state.currentUser = {}
+      state.currentUser = null
       state.error = "User fetch failed. Please try logging in!"
     },
     [toggleFavorite.fulfilled]: (state, action) => {

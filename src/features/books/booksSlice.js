@@ -9,7 +9,8 @@ const initialState = {
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
     const books = await fetch(`http://localhost:3001/books`).then(resp => resp.json())
 
-    return books.map(book => ({...book, author: `${book.author.first_name} ${book.author.last_name}`}))}
+    return books}
+    // .map(book => ({...book, author: `${book.author.first_name} ${book.author.last_name}`}))}
 )
 
 export const addNewReview = createAsyncThunk('books/addNewReview', async initialReview => {

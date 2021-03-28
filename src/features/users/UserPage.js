@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
+
 
 export const UserPage = () => {
 
@@ -14,7 +16,7 @@ export const UserPage = () => {
                 </div>
                 <div className="half-box">
                     {console.log(currentUser.books)}
-                    {currentUser.books.map(book => <p>{book.title} - {book.author.first_name} {book.author.last_name}</p>)}
+                    {currentUser.books.map(book => <p key={nanoid()}>{book.title} - {book.author}</p>)}
                 </div>
                 <div className="full-box">
                     reviews
