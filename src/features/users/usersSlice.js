@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const initialState = {
   users: [],
   currentUser: null,
+  status: 'idle',
   error: null
 }
 
@@ -46,7 +47,7 @@ export const userLogin = createAsyncThunk('users/userLogin', async userInfo => {
   return response
 })
 
-export const currentUser = createAsyncThunk('users/currentUser', async () => {
+export const pageUser = createAsyncThunk('users/pageUser', async () => {
   const response = await fetch('http://localhost:3001/profile', {
     headers: {
       'Authorization': `Bearer ${window.localStorage.getItem('token')}`
@@ -115,11 +116,16 @@ const usersSlice = createSlice({
       state.users = action.payload
       console.log(action.payload)
     },
-    [currentUser.fulfilled]: (state, action) => {
-      state.currentUser = action.payload.user
+    [pageUser.pending]: (state, action) => {
+      state.status = 'loading'
     },
-    [currentUser.rejected]: (state, action) => {
+    [pageUser.fulfilled]: (state, action) => {
+      state.currentUser = action.payload.user
+      state.status = 'succeeded'
+    },
+    [pageUser.rejected]: (state, action) => {
       state.currentUser = null
+      state.status = 'failed'
       state.error = "User fetch failed. Please try logging in!"
     },
     [toggleFavorite.fulfilled]: (state, action) => {

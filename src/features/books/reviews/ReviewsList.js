@@ -3,8 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 // import { Link } from 'react-router-dom'
 // import { AddReviewForm } from './AddReviewForm'
-import { ReviewUser } from './ReviewUser'
-import { TimeAgo } from './TimeAgo'
+import { BookReviewCard} from './BookReviewCard'
 
 export const ReviewsList = ({bookId}) => {
     const reviews = useSelector(state =>
@@ -13,15 +12,7 @@ export const ReviewsList = ({bookId}) => {
     const orderedReviews = reviews.slice().sort((a,b) => b.date.localeCompare(a.date))
     
     const renderedReviews = orderedReviews.map(review => (
-        <article className="review-excerpt" key={nanoid()}>
-            <h3>{review.title}</h3>
-            <p className="review-content">{review.content.substring(0, 200)}</p>
-            <ReviewUser userId={review.user} />
-            <TimeAgo timestamp={review.date} />
-            {/* <Link to={`/editReview/${review.id}`} className="button">
-                Edit Review
-            </Link> */}
-        </article>
+        <BookReviewCard review={review} />
         //make it so u can expand a review and see more than just the preview
     )//add code here to make it so that a max of 6 reviews show? or make a box around them and let you scroll thru the whole thing?
     )

@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import settingsIcon from '../images/settingsicon.png';
 import { useDispatch, useSelector } from 'react-redux'
 import { userLogout } from '../features/users/usersSlice'
+import { pageUser } from '../features/users/usersSlice'
 
 export const Navbar = () => {
 
@@ -22,7 +23,7 @@ export const Navbar = () => {
         return (
             <div className="navbar">
                 <Link to="/">Home</Link>
-                <Link to="/account">Account</Link>
+                <Link to="/account" onClick={() => dispatch(pageUser())}>Account</Link>
                 <div className="dropdown left">
                     <button className="dropbtn gen">Books</button>
                     <div className="dropdown-content">

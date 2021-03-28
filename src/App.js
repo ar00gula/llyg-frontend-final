@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,8 +16,11 @@ import { SingleBookPage } from './features/books/SingleBookPage'
 import { SignUpForm } from './features/users/Signup';
 import { LoginForm } from './features/users/LoginForm';
 import { UserPage } from './features/users/UserPage'
+import { pageUser } from './features/users/usersSlice'
+
 
 function App() {
+
 
   return (
     <Router>

@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom'
 export const BookCard = ({book}) => {
     return (
         <div className="bookcard">
-            <Link to={{pathname: `/books/${book.id}`}}>{book.title}</Link>
-            <HeartButton book={book}/>
-            <img className="book-cover" src={book.img_url} alt="book-cover" />
+            <Link to={{pathname: `/books/${book.id}`}}><img className="book-cover" src={book.img_url} alt="book-cover" /></Link>
+            <span className="heart-button"><HeartButton book={book}/></span>
         </div>
     )
 }
