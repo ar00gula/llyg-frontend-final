@@ -123,7 +123,15 @@ const usersSlice = createSlice({
       state.error = "User fetch failed. Please try logging in!"
     },
     [toggleFavorite.fulfilled]: (state, action) => {
-      state.currentUser.books.push(action.payload.favoriteBook)
+      if (action.payload.addBook) {
+        console.log('adding')
+      state.currentUser.books.push(action.payload.addBook)
+      } else {
+        console.log("removing")
+        console.log(action.payload.removeBook.id)
+        console.log(state.currentUser.books)
+        state.currentUser.books = state.currentUser.books.filter(book => book.id !== action.payload.removeBook.id)
+      }
     }
   }
 })
