@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewReview } from '../booksSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
-import { reviewAdded } from '../../users/usersSlice'
-
 
 export const AddReviewForm = ({bookId}) => {
     const dispatch = useDispatch()

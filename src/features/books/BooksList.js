@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import {SortBooksForm} from './SortBooksForm'
 import { BookCard } from './BookCard'
-import { selectAllBooks, fetchBooks } from './booksSlice'
+import { selectAllBooks } from './booksSlice'
 // import { ReviewUser } from './ReviewUser'
 // import { TimeAgo } from './TimeAgo'
 
 export const BooksList = () => {
-    const dispatch = useDispatch()
     const books = useSelector(selectAllBooks)
     //stretch goals - ignore "the" and "a", sort by series inside of author
     

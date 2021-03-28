@@ -8,7 +8,7 @@ export const BookCard = ({book}) => {
         <div className="bookcard">
             <Link to={{pathname: `/books/${book.id}`}}>{book.title}</Link>
             <HeartButton book={book}/>
-            <img className="book-cover" src={book.img_url} alt="cover-image" />
+            <img className="book-cover" src={book.img_url} alt="book-cover" />
         </div>
     )
 }

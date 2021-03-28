@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
+import { Link } from 'react-router-dom'
 
 
 export const UserPage = () => {
 
-    const usersSlice = useSelector(state => state.users)
     const currentUser = useSelector(state => state.users.currentUser)
+
     
     if (currentUser) {
         return (
@@ -15,8 +16,7 @@ export const UserPage = () => {
                     {console.log(currentUser)}
                 </div>
                 <div className="half-box">
-                    {console.log(currentUser.books)}
-                    {currentUser.books.map(book => <p key={nanoid()}>{book.title} - {book.author}</p>)}
+                    {currentUser.books.slice().reverse().map(book => <Link to={book.id} key={nanoid()}>{book.title} - {book.author}<br></br></Link>)}
                 </div>
                 <div className="full-box">
                     reviews

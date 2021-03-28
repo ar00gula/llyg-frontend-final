@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { AddReviewForm } from './reviews/AddReviewForm'
 import { ReviewsList } from './reviews/ReviewsList'
 
 export const SingleBookPage = ({ match }) => {
-  const dispatch = useDispatch()
   const bookId = match.params.bookId
   console.log(match)
   console.log(bookId)
