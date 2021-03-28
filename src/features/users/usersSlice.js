@@ -64,7 +64,7 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
 
 export const toggleFavorite = createAsyncThunk('books/toggleFavorite', async favoriteInfo => {
   const response = await fetch(`http://localhost:3001/users/update`, {
-    method: "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
@@ -87,6 +87,9 @@ const usersSlice = createSlice({
     },
     userLogout(state) {
       state.currentUser = {}
+    },
+    reviewAdded(state, action) {
+      state.currentUser.reviews.push(action.payload)
     }
   },
   extraReducers: {
@@ -116,12 +119,12 @@ const usersSlice = createSlice({
       state.currentUser = action.payload.user
     },
     [toggleFavorite.fulfilled]: (state, action) => {
-      state.currentUser.favorites.push(action.payload.favoriteBook)
+      state.currentUser.books.push(action.payload.favoriteBook)
     }
   }
 })
 
-export const { authenticated, userLogout } = usersSlice.actions
+export const { authenticated, userLogout, reviewAdded } = usersSlice.actions
 
 
 export default usersSlice.reducer

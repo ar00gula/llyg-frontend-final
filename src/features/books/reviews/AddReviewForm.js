@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewReview } from '../booksSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
+import { reviewAdded } from '../../users/usersSlice'
 
 
 export const AddReviewForm = ({bookId}) => {
@@ -10,7 +11,6 @@ export const AddReviewForm = ({bookId}) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
-
 
     const currentUser = useSelector(state => state.users.currentUser)
 
@@ -21,11 +21,13 @@ export const AddReviewForm = ({bookId}) => {
 
     const onSubmitReview = async () => {
         const date = new Date().toISOString()
+        const review = addNewReview({title: title, content: content, username: currentUser.username, userId: currentUser.id, book: bookId, date: date})
+
         if (canSave) {
             try { setAddRequestStatus('pending')
-            const resultAction = await dispatch(
-                addNewReview({title: title, content: content, user: currentUser.id, book: bookId, date: date})
+            const resultAction = await dispatch(review
                 //dispatching action creator (includes defined type string) with arugment of our desired payload
+                //username and user_id are redundant but i don't want to take the time to update on backend
             )
             unwrapResult(resultAction)
 

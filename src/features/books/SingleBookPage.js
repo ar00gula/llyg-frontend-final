@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { AddReviewForm } from './reviews/AddReviewForm'
 import { ReviewsList } from './reviews/ReviewsList'
-import { fetchBooks } from './booksSlice'
 
 export const SingleBookPage = ({ match }) => {
   const dispatch = useDispatch()

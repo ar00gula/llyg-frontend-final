@@ -39,3 +39,29 @@ section h1 {
 p.review-content {
   margin-top: 10px;
 }
+
+
+/* home */
+
+.half-box {
+  display: inline-block;
+  margin: 2.5%;
+  width: 45%;
+  height: 500px;
+  border-radius: 20px;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  overflow: scroll;
+}
+
+.full-box {
+  display: inline-block;
+  margin: 2.5%;
+  width: 95%;
+  min-height: 500px;
+  border-radius: 20px;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+}

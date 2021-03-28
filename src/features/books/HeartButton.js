@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { heartAdded, heartRemoved } from './booksSlice'
+import { toggleFavorite } from '../users/usersSlice'
 
 export const HeartButton = ({ book }) => {
   const dispatch = useDispatch()
@@ -19,15 +19,15 @@ export const HeartButton = ({ book }) => {
         className="muted-button heart-button"
         onClick={() => {
           if (liked === false) {
-            dispatch(heartAdded({ bookId: book.id }))
+            dispatch(toggleFavorite({ book_id: book.id, favorite: true }))
             setLiked(true)
           } else {
-            dispatch(heartRemoved({ bookId: book.id }))
+            dispatch(toggleFavorite({ book_id: book.id, favorite: false }))
             setLiked(false)
           }
         }}
       >
-        {emoji} {book.hearts}
+        {emoji}
       </div>
 
   return heartButton

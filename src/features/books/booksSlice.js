@@ -38,7 +38,8 @@ export const addNewReview = createAsyncThunk('books/addNewReview', async initial
         date: initialReview.date,
         title: initialReview.title,
         content: initialReview.content,
-        user: initialReview.user,
+        user: initialReview.username,
+        user_id: initialReview.userId,
         book_id: initialReview.book
       })
     }).then(resp => resp.json())
@@ -74,7 +75,7 @@ const booksSlice = createSlice({
         }
     },
     extraReducers: {
-        [fetchBooks.pending]: (state, action) => {
+        [fetchBooks.pending]: (state) => {
             state.status = 'loading'
         },
         [fetchBooks.fulfilled]: (state, action) => {

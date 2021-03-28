@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getUsers } from './usersSlice'
+import React from 'react'
 
 export const UserPage = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-        dispatch(getUsers())
-  }, [dispatch])
-
-  return (
-    <section>
-        hey
-    </section>
-  )
+    
+    return (
+        <div>
+            <div className="half-box">
+                Hello!
+            </div>
+            <div className="half-box">
+            </div>
+            <div className="full-box">
+                reviews
+            </div>
+        </div>
+    )
 }
