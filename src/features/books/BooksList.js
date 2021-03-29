@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import {SortBooksForm} from './SortBooksForm'
 import { BookCard } from './BookCard'
 import { selectAllBooks } from './booksSlice'
-// import { ReviewUser } from './ReviewUser'
-// import { TimeAgo } from './TimeAgo'
+
+//refactor css to use grid
 
 export const BooksList = () => {
     const books = useSelector(selectAllBooks)
@@ -12,12 +12,6 @@ export const BooksList = () => {
     
     const bookStatus = useSelector(state => state.books.status)
     const error = useSelector(state => state.books.error)
-
-    // useEffect(() => {
-    //     if(bookStatus === 'idle') {
-    //         dispatch(fetchBooks())
-    //     }
-    // }, [bookStatus, dispatch])
 
     const [sortBy, setSortBy] = useState('author')
 

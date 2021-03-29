@@ -10,14 +10,6 @@ export const SingleBookPage = ({ match }) => {
 
   const book = useSelector(state => state.books.books.find(book => book.id.toString() === bookId))
 
-  // useEffect(() => {
-  //   if (addRequestStatus === 'idle') {
-  //       dispatch(fetchBooks())
-  //       //this is VERY wrong (creating additional entries) how tf do i update this should be so easy
-  //   }
-  // }, [addRequestStatus, dispatch])
-  // const [review, setReview] = useState([])
-
   if (!book) {
     return (
       <section>
@@ -27,11 +19,21 @@ export const SingleBookPage = ({ match }) => {
   }
 
   return (
-    <section>
-        <img src={book.img_url} alt="cover" />
-        <h1>{book.title}</h1>
+    <div className="single-book-page">
+      <div className='book-container'>
+        <div className='book-img-container'>
+          <img className="book-page-img" src={book.img_url} alt="cover" />
+        </div>
+        <div className='book-info-container'>
+          <h1>{book.title}</h1>
+          <h2>{book.author}</h2>
+          {book.summary.split('<b>').join("").split('<br>').join("").split('</b>').join("")}
+        </div>
+      </div>
+        <div className= 'reviews-container'>
           <ReviewsList bookId={bookId}/>
           <AddReviewForm bookId={bookId} />
-    </section>
+        </div>
+    </div>
   )
 }

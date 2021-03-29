@@ -6,16 +6,16 @@ export const HeartButton = ({ book }) => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.users.currentUser)
 
-  let emoji
-  if (currentUser.books) {
-    if (currentUser.books.find(userBook => userBook.title === book.title )) {
-      emoji = "♥"
-    } else {
-      emoji = "♡"
+  if (currentUser) {
+    let emoji
+    if (currentUser.books) {
+      if (currentUser.books.find(userBook => userBook.title === book.title )) {
+        emoji = "♥"
+      } else {
+        emoji = "♡"
+      }
     }
-  }
-
-  const heartButton = 
+    const heartButton = 
       <div
         className="muted-button heart-button"
         onClick={() => {
@@ -30,4 +30,11 @@ export const HeartButton = ({ book }) => {
       </div>
 
   return heartButton
+  } else {
+    return("")
+  }
+
+  
+
+  
 }

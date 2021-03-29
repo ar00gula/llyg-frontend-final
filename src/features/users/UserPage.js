@@ -22,17 +22,22 @@ export const UserPage = () => {
     if (currentUser) {
         return (
             <div className="userPage">
+                <div className="grid-container">
+                    <div className="col">
                 <h2>Currently Reading</h2>
                 <div className="half-box">
-                    {console.log(currentUser)}
-                </div>
+                    {"Current book!"}
+                </div></div>
+                <div className="col">
+                    <h2>Favorites</h2>
                 <div className="half-box">
                     {currentUser.books.slice().reverse().map(book => <Link to={{pathname: `/books/${book.id}`}}>{book.title} - {book.author}<br></br></Link>)}
-                </div>
+                </div></div></div>
                 <h2>Reviews</h2>
                 <div className="full-box">
                     {currentUser.reviews.slice().reverse().map(review => <UserReviewCard review={review} />)}
                 </div>
+                
             </div>
         )
     } else {

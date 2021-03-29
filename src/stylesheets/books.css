@@ -17,3 +17,32 @@
     font-size: 36px;
     color: pink;
 }
+
+.single-book-page h1 {
+    display: inline-block;
+    text-align: center;
+}
+
+/*single book page*/
+div {
+    display: inherit;
+}
+
+.single-book-page {
+    width: 800px;
+    margin: auto;
+}
+.book-page-img {
+    width: 350px;
+    padding-top: 25px;
+}
+.book-info-container {
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: 350px 400px;
+    grid-column-gap: 50px;
+}

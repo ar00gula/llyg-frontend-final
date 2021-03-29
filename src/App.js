@@ -26,13 +26,7 @@ function App() {
     <Router>
       <div className="wrapper">
         <Switch>
-          <Route
-            exact path="/"
-            render={() => (
-              <React.Fragment>
-              </React.Fragment>
-            )}
-          />
+          <Route exact path="/" />
           <Route
             exact path="/books"
             render={() => (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { ReviewUser } from './ReviewUser'
 import { TimeAgo } from './TimeAgo'
 import { nanoid } from '@reduxjs/toolkit'
 
@@ -9,7 +8,8 @@ export const BookReviewCard = ({review}) => {
         <article className="review-excerpt" key={nanoid()}>
             <h3>{review.title}</h3>
             <p className="review-content">{review.content.substring(0, 200)}</p>
-            <ReviewUser userId={review.user_id} />
+            {review.username}
+            {/* go refactor yr backend so it sends a username too */}
             <TimeAgo timestamp={review.date} />
             {/* <Link to={`/editReview/${review.id}`} className="button">
                 Edit Review
