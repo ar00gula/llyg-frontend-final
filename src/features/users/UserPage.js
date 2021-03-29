@@ -18,6 +18,8 @@ export const UserPage = () => {
     //this is doing nothing
 
     const currentUser = useSelector(state => state.users.currentUser)
+    const books = useSelector(state => state.books.books)
+    let currentBook = currentUser.books.find(book => book.id > 1).img_url
 
     if (currentUser) {
         return (
@@ -26,12 +28,14 @@ export const UserPage = () => {
                     <div className="col">
                 <h2>Currently Reading</h2>
                 <div className="half-box">
-                    {"Current book!"}
+                    <img style={{height: "500px", margin: "auto", display: "block"}} src={currentBook} alt="cover" />
                 </div></div>
                 <div className="col">
                     <h2>Favorites</h2>
                 <div className="half-box">
-                    {currentUser.books.slice().reverse().map(book => <Link to={{pathname: `/books/${book.id}`}}>{book.title} - {book.author}<br></br></Link>)}
+                    {console.log(currentUser.books)}
+                    {currentUser.books.slice().reverse().map(book => <Link to={{pathname: `/books/${book.id}`}}><p><span className="format-title">{book.title} </span><span style={{fontSize: "20px"}}>||</span> {book.author}<br></br></p></Link>)}
+                    {/* <img className="fav-cover-img" src={book.img_url} alt="cover" /> */}
                 </div></div></div>
                 <h2>Reviews</h2>
                 <div className="full-box">

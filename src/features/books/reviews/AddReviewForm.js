@@ -42,9 +42,10 @@ export const AddReviewForm = ({bookId}) => {
 
     return (
         <section className="review-form">
+            <br></br>
             <h2>Write a Review!</h2>
             <form>
-                <label htmlFor="reviewTitle">Review Title:</label>
+                <label htmlFor="reviewTitle">Review Title: </label>
                 <input
                 type="text"
                 id="reviewTitle"
@@ -53,13 +54,15 @@ export const AddReviewForm = ({bookId}) => {
                 onChange={onTitleChanged}
                 />
                 <br></br>
-                <label htmlFor="reviewContent">Content:</label>
+                <br></br>
+                <label htmlFor="reviewContent">Content: </label>
                 <textarea
                 id="reviewContent"
                 name="reviewContent"
                 value={content}
                 onChange={onContentChanged}
                 />
+                <br></br>
                 <br></br>
                 <button type="button" onClick={onSubmitReview} disabled={!canSave}>Submit Review</button>
             </form>

@@ -63,7 +63,7 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
   }
 )
 
-export const toggleFavorite = createAsyncThunk('books/toggleFavorite', async favoriteInfo => {
+export const toggleFavorite = createAsyncThunk('users/toggleFavorite', async favoriteInfo => {
   const response = await fetch(`http://localhost:3001/users/update`, {
     method: "PATCH",
     headers: {
@@ -78,6 +78,21 @@ export const toggleFavorite = createAsyncThunk('books/toggleFavorite', async fav
   }).then(resp => resp.json())
   return response
 })
+
+// export const currentlyReading = createAsyncThunk('users/currentlyReading', async (book) => {
+//   const response = await fetch(`http://localhost:3001/users/currentlyReading`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json",
+//       'Authorization': `Bearer ${window.localStorage.getItem('token')}`
+//     },
+//     body: JSON.stringify({
+//       book_id: book.book_id,
+//     })
+//   }).then(resp => resp.json())
+//   return response
+// })
 
 const usersSlice = createSlice({
   name: 'users',
@@ -139,6 +154,9 @@ const usersSlice = createSlice({
         state.currentUser.books = state.currentUser.books.filter(book => book.id !== action.payload.removeBook.id)
       }
     }
+    // [currentlyReading.fulfilled]: (state, action) => {
+    //   state.currentUser.currentBooks.push(action.payload.currentBook)
+    // }
   }
 })
 
