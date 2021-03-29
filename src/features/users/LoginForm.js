@@ -48,16 +48,16 @@ export const LoginForm = () => {
         <div>{}</div>
         <form className="ui form">
             <div className="field">
-                <label>Username</label>
+                <label>Username: </label>
                 <input value={username} onChange={handleUsernameChange} type="text" name="username" placeholder="username"/>
-            </div>
+            </div><br></br>
             <div className="field">
-                <label>Password</label>
+                <label>Password: </label>
                 <input value={password} onChange={handlePasswordChange} type="password" name="password" placeholder="password"/>
-            </div>
+            </div><br></br>
             
             <button className="ui button" type="button" onClick={handleSubmit} disabled={!canSave}>Login!</button>
-
+            <br></br><br></br>
             <div>
                 or <Link to={{pathname: `/signup`}}>sign up</Link>!
             </div>

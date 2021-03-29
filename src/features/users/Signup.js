@@ -52,20 +52,20 @@ export const SignUpForm = () => {
         <h1>Sign Up</h1>
         <form className="ui form">
             <div className="field">
-                <label>Username</label>
+                <label>Username: </label>
                 <input value={username} onChange={handleUsernameChange} type="text" name="username" placeholder="username"/>
-            </div>
+            </div><br></br>
             <div className="field">
-                <label>Password</label>
+                <label>Password: </label>
                 <input value={password} onChange={handlePasswordChange} type="password" name="password" placeholder="password"/>
-            </div>
+            </div><br></br>
             <div className="field">
-                <label>Password</label>
+                <label>Password: </label>
                 <input value={passwordConfirmation} onChange={handlePasswordConfirmationChange} type="password" name="password_confirmation" placeholder="password confirmation"/>
-            </div>
+            </div><br></br>
             
             <button className="ui button" type="button" onClick={handleSubmit} disabled={!canSave}>Sign Up!</button>
-
+            <br></br><br></br>
             <div>
                 or <Link to={{pathname: `/login`}}>log in</Link>!
             </div>

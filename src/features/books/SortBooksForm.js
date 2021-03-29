@@ -10,8 +10,7 @@ export const SortBooksForm = (props) => {
             <option value=""></option>
             <option value="author">Author</option>
             <option value="title">Title</option>
-            <option value="recent">Recent</option>
-            <option value="genre">Genre</option>
+            {/* add genre, series, recent */}
         </select>
       </form>
     </div>

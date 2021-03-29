@@ -19,7 +19,7 @@ export const UserPage = () => {
 
     const currentUser = useSelector(state => state.users.currentUser)
     const books = useSelector(state => state.books.books)
-    let currentBook = currentUser.books.find(book => book.id > 1).img_url
+    let currentBook = currentUser.books.find(book => book.id > 1)
 
     if (currentUser) {
         return (
@@ -28,7 +28,7 @@ export const UserPage = () => {
                     <div className="col">
                 <h2>Currently Reading</h2>
                 <div className="half-box">
-                    <img style={{height: "500px", margin: "auto", display: "block"}} src={currentBook} alt="cover" />
+                    {!currentBook ? "" : <Link to={{pathname: `/books/${currentBook.id}`}}><img style={{height: "500px", margin: "auto", display: "block"}} src={currentBook.img_url} alt="cover" /></Link>}
                 </div></div>
                 <div className="col">
                     <h2>Favorites</h2>

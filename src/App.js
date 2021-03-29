@@ -16,7 +16,7 @@ import { SingleBookPage } from './features/books/SingleBookPage'
 import { SignUpForm } from './features/users/Signup';
 import { LoginForm } from './features/users/LoginForm';
 import { UserPage } from './features/users/UserPage'
-import { pageUser } from './features/users/usersSlice'
+import { Home } from './features/users/Home'
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
     <Router>
       <div className="wrapper">
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={Home}/>
           <Route
             exact path="/books"
             render={() => (

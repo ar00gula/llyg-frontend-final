@@ -36,7 +36,7 @@ export const SingleBookPage = ({ match }) => {
         <div className='book-info-container'>
           <h1>{book.title}</h1>
           <h2>{book.author}</h2>
-          {book.summary.split('<b>').join("").split('<br>').join("").split('</b>').join("")}
+          {book.summary.split('<b>').join("").split('<br>').join("").split('</b>').join("").split('<i>').join("").split('</i>').join("")}
         </div>
       </div>
         <div className= 'reviews-container'>

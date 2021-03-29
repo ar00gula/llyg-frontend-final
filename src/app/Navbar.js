@@ -35,9 +35,9 @@ export const Navbar = () => {
                 <div className="dropdown right">
                     <button className="dropbtn settings"><img src={settingsIcon} alt="settings-icon" height="35px"/></button>
                     <div className="dropdown-content-right">
-                    <Link to="/account/settings">Settings</Link>
-                    <Link to="/account/my-favorites">My Favorites</Link>
-                    <Link to="/account/my-reviews">My Reviews</Link>
+                    {/* <Link to="/account/settings">Settings</Link>
+                    <Link to="/account/my-favorites">My Favorites</Link> */}
+                    <Link to="/account">My Account</Link>
                     <a href="/" onClick={() => logout()}>Logout</a>
                     {/* Make this a working logout link */}
                     </div>
@@ -56,8 +56,10 @@ export const Navbar = () => {
                     <Link to="/books">Browse</Link>
                     </div>
                 </div>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
+                <div className="right">
+                    <Link to="/login">Login</Link>
+                    <Link to="/signup">Signup</Link>
+                </div>
         </div>
         )
     }
