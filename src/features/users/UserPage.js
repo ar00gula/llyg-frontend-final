@@ -4,6 +4,7 @@ import { nanoid } from '@reduxjs/toolkit'
 import { Link } from 'react-router-dom'
 import { UserReviewCard } from '../books/reviews/UserReviewCard'
 import { pageUser } from './usersSlice'
+import Incrementer from './Incrementer'
 
 export const UserPage = () => {
 
@@ -42,6 +43,7 @@ export const UserPage = () => {
                     {currentUser.reviews.slice().reverse().map(review => <UserReviewCard review={review} />)}
                 </div>
                 
+                <Incrementer />
             </div>
         )
     } else {
