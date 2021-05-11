@@ -43,7 +43,6 @@ export const UserPage = () => {
                     {currentUser.reviews.slice().reverse().map(review => <UserReviewCard review={review} />)}
                 </div>
                 
-                <Incrementer />
             </div>
         )
     } else {
